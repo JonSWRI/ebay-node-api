@@ -52,7 +52,7 @@ const getShippingCosts = function (input) {
   */
 const getMultipleItems = function (options) {
     if (!options || !options.itemId) throw new Error('invalid_request_error -> Item ID is null or invalid');
-    const requestUrl = `${urlObject.buildShoppingUrl(this.options, 'GetMultipleItems')}&${stringifyUrl({ 'itemId': makeString(options.itemId, { braces: 'false', quotes: 'no' }) })}`;
+    const requestUrl = `${urlObject.buildShoppingUrl(this.options, 'GetMultipleItems')}&${stringifyUrl({'IncludeSelector': 'ItemSpecifics'})}&${stringifyUrl({ 'itemId': makeString(options.itemId, { braces: 'false', quotes: 'no' }) })}`;
     return getRequest(requestUrl).then((data) => {
         return JSON.parse(data);
     }, console.error // eslint-disable-line no-console
